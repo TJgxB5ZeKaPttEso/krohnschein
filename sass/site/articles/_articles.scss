@@ -1,0 +1,125 @@
+%content-column {
+  width: span(8);
+  margin-left: span(2 wide);
+  padding: 1.5em 10%;
+  background-color: #fff;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.single,
+.page {
+  .article__wrap {
+    .entry-footer,
+    .entry-content > p,
+    .entry-content > h1,
+    .entry-content > h2,
+    .entry-content > h3,
+    .entry-content > h4,
+    .entry-content > h5,
+    .entry-content > h6,
+    .entry-content > table,
+    .entry-content > address,
+    .entry-content > pre {
+      @extend %content-column;
+
+    }
+    .entry-content > blockquote {
+      width: span(4);
+      margin-left: span(1 wide);
+      margin-bottom: 1em;
+      margin-top: 1em;
+      padding: 1.5em;
+      float: left;
+      color: $color__krohnschein_secondary;
+      font-size: 1.125em;
+      p {
+        margin: 0;
+        font-weight: 500;
+
+      }
+      a {
+        color: $color__krohnschein_blue;
+        text-decoration: none;
+        border-bottom: 2px solid $color__krohnschein_blue;
+
+        &:visited {
+          color: $color__krohnschein_blue;
+        }
+        &:hover,
+        &:focus,
+        &:active {
+          color: $color__link;
+          border-bottom: 2px solid $color__link;
+          background-color: initial;
+        }
+        &:focus {
+          outline: thin dotted;
+        }
+        &:hover,
+        &:active {
+          outline: 0;
+        }
+      }
+
+    }
+    .entry-header {
+      width: span(8);
+      margin-left: span(2 wide);
+      background-color: #fff;
+      padding-left: span(1 wide);
+      padding-right: span(1 wide);
+      padding-top: 0.25em;
+
+    }
+    .entry-content > ul,
+    .entry-content > ol,
+    .entry-content > dl {
+      @extend %content-column;
+
+    }
+    .entry-content > ol {
+      padding-left: span(1 wide);
+      & > li {
+        margin-left: 10px;
+      }
+    }
+
+    %imagesize-in-article {
+      width: span(3);
+      max-width: span(3);
+      margin-right: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .alignright {
+      margin-right: span(1 wide);
+      @extend %imagesize-in-article;
+    }
+    .alignleft {
+      margin-left: span(1 wide);
+      @extend %imagesize-in-article;
+    }
+    .aligncenter {
+      max-width: span(8);
+
+    }
+    .alignnone {
+
+    }
+
+
+}
+
+/* article__wrap */
+.site-main > article:first-child {
+  margin-top: -10em;
+}
+
+.post-thumbnail {
+  width: span(4);
+  margin-left: span(3 wide);
+}
+
+}

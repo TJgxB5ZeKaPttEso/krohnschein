@@ -1,0 +1,86 @@
+.site-header {
+  background-image: linear-gradient(180deg, rgba( $color__krohnschein_blue ,0.65) 0%,rgba($color__krohnschein_blue,0) 100%);
+  position: absolute;
+  width: 100%;
+  z-index: 99;
+
+  a {
+    padding: 35px 14px 25px;
+    color: #fff;
+    text-decoration: none;
+    text-transform: lowercase;
+    border: none;
+    line-height: 36px;
+    &:hover {
+      background: rgba($color__krohnschein_blue, 0.3);
+    }
+  }
+
+  a[href*="amazon"]:before {
+    content: inline-svg("diamond", white);
+    width: 36px;
+    height: 36px;
+    fill: black;
+    display: block;
+  }
+  a[href*="vimeo.com"]:before {
+    content: inline-svg("vimeo-square", white);
+    width: 36px;
+    height: 36px;
+    fill: black;
+    display: block;
+    svg {
+      fill: #eaff00;
+    }
+  }
+  a[href*="pinterest"]:before {
+    content: inline-svg("pinterest", white);
+    width: 36px;
+    height: 36px;
+    fill: black;
+    display: block;
+  }
+
+  .site-branding {
+    position: relative;
+    float: left;
+    margin-top: 29px;
+    .site-title {
+      margin: 0 0 0 1.3em;
+      font-size: 2em;
+      line-height:1;
+      clear: none;
+      color: #fff;
+      font-weight:700;
+      a {
+        color: #fff;
+      }
+    }
+    .nav_logo {
+      float: left;
+      width: 36px;
+      height: 36px;
+
+      svg {
+        fill: none;
+        stroke-width: 2;
+        stroke: #fff;
+
+        #underline {
+          stroke-linecap: square;
+        }
+      }
+    }
+  }
+}
+
+.masthead__wrap {
+  border-bottom: 1px solid hsla(0, 0, 100, 0.5);
+  width: span(8);
+
+  @include breakpoint($for-phone-only) {
+    width:90%;
+    border: none;
+  }
+
+}

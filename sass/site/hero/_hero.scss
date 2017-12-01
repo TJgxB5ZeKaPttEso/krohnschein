@@ -1,0 +1,70 @@
+.tp-bgimg.defaultimg::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color__krohnschein_blue, 0.4);
+
+}
+
+.hero_wrapper {
+
+}
+
+.slider-fallback {
+  position: relative;
+  background-color: $color__krohnschein_blue;
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 700px;
+  height: calc(100vh - 50px);
+  min-height: 650px;
+  width: 100%;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba($color__krohnschein_blue, 0.33);
+  }
+
+  &.no-thumbnail {
+    height: 700px;
+    height: calc(100vh - 50px);
+    min-height: 650px;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: rgba($color__krohnschein_blue, 0.33);
+    }
+    @include breakpoint($for-phone-only) {
+      height: 60%;
+
+    }
+
+
+  }//no-thumbnail
+
+  .slider-fallback-title-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width:span(8);
+    h1, h2 {
+      color: #fff;
+      line-height: 1.125;
+      font-size:2.4em;
+    }
+    @include breakpoint($for-phone-only) {
+      transform: translate(-50%, -50%);
+      width: 90%;
+
+    }
+
+  }//slider-fallback-title-wrapper
+
+}

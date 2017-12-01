@@ -1,0 +1,20 @@
+a {
+	color: $color__link;
+	text-decoration: none;
+
+	&:visited {
+		color: $color__krohnschein_blue;
+	}
+	&:hover,
+	&:focus,
+	&:active {
+		border-bottom: 2px solid currentcolor;
+	}
+	&:focus {
+		outline: thin dotted;
+	}
+	&:hover,
+	&:active {
+		outline: 0;
+	}
+}

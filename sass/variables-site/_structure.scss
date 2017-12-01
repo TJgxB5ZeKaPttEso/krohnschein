@@ -1,0 +1,24 @@
+$size__site-main: 100%;
+$size__site-sidebar: 25%;
+
+/*--------------------------------------------------------------
+## breakpoints
+--------------------------------------------------------------*/
+
+
+$for-phone-only: max-width 599px;
+$for-tablet-portrait-up: 600px;
+$for-tablet-landscape-up: 900px;
+$for-desktop-up: 1200px;
+$for-big-desktop-up: 1800px;
+
+
+/*--------------------------------------------------------------
+## full width wrappers
+--------------------------------------------------------------*/
+
+.masthead__wrap,
+.article__wrap {
+  margin: auto;
+
+}
