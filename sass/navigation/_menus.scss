@@ -1,3 +1,7 @@
+/**
+* Main Navigation
+ */
+
 .main-navigation {
 
   width: 100%;
@@ -7,6 +11,8 @@
   }
   .menu-socials-container {
     border-left: 1px solid rgba(255, 255, 255, .5);
+    padding-left: 5px;
+    margin-left: 10px;
   }
   ul {
     display: none;
@@ -78,7 +84,7 @@
     clear: both;
   }
 
-}
+}// main navigation
 
 /* Small menu. */
 .menu-toggle,

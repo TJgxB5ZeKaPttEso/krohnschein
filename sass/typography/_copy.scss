@@ -1,5 +1,9 @@
 p {
 	margin-bottom: 1.5em;
+	&.abstract {
+		font-size: 1.3em;
+		color: $color__krohnschein_blue;
+	}
 }
 
 dfn, cite, em, i {

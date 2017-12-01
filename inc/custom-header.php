@@ -21,6 +21,8 @@ function krohnschein_custom_header_setup() {
 		'default-image'          => '',
 		'default-text-color'     => '000000',
 		'width'                  => 2000,
+		'flex-width'             => true,
+		'height'                 => 600,
 		'flex-height'            => true,
 		'wp-head-callback'       => 'krohnschein_header_style',
 	) ) );

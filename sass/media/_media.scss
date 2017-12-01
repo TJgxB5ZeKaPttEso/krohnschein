@@ -1,22 +1,22 @@
 .page-content .wp-smiley,
 .entry-content .wp-smiley,
 .comment-content .wp-smiley {
-	border: none;
-	margin-bottom: 0;
-	margin-top: 0;
-	padding: 0;
+  border: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0;
 }
 
 /* Make sure embeds and iframes fit their containers. */
 embed,
 iframe,
 object {
-	max-width: 100%;
+  max-width: 100%;
 }
 
 /* Make sure logo link wraps around logo image. */
 .custom-logo-link {
-	display: inline-block;
+  display: inline-block;
 }
 
 /*--------------------------------------------------------------
@@ -28,3 +28,51 @@ object {
 ## Galleries
 --------------------------------------------------------------*/
 @import "galleries";
+
+/*--------------------------------------------------------------
+## Featherlight
+--------------------------------------------------------------*/
+@import "featherlight";
+
+
+
+/*--------------------------------------------------------------
+## InVison
+--------------------------------------------------------------*/
+.proto-wrapper {
+  font-size: 16px;
+  position: relative;
+  margin-left: 20.64286%;
+  display: block;
+  float: left;
+  width: span(3);
+  height: 0;
+  padding-bottom: 50em;
+  margin-right: 4em;
+  .proto-prototype {
+    position: absolute;
+    left: 50%;
+    display: block;
+    overflow: hidden;
+    width: 23.4375em;
+    height: 41.5em;
+    margin-top: 3.125em;
+    margin-left: -11.40625em;
+    box-shadow: 0 1.875em 2.5em 0 rgba(0, 0, 0, .3);
+    .proto-prototype-frame {
+      position: absolute;
+      width: 29.0625em;
+      height: 58.75em;
+      margin-top: -6.625em;
+      margin-left: -2.5em;
+
+      iframe {
+        max-width: 100%;
+        border: 0;
+        background: #000;
+      }
+
+    }
+  }
+}
+

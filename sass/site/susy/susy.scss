@@ -1,6 +1,46 @@
 $susy: (
         'columns': susy-repeat(12),
-        'gutters': 0.25,
+        'gutters': 0.5,
         'spread': 'narrow',
         'container-spread': 'narrow',
 );
+
+%content-column {
+
+  padding: 2.5em 10%;
+  background-color: #fff;
+  margin-bottom: 0;
+  margin-top: 0;
+  @include breakpoint($for-big-desktop-up) {
+    width: span(8);
+    margin-left: span(2 wide);
+    padding: 2.5em 15%;
+  }
+  @include breakpoint($for-desktop-up) {
+    width: span(10);
+    margin-left: span(1 wide);
+  }
+  @include breakpoint($for-tablet-landscape-up) {
+    width: span(10);
+    margin-left: span(1 wide);
+
+  }
+}
+
+%misc-column {
+  width: span(10);
+  margin-left: span(1 wide);
+  @include breakpoint($for-big-desktop-up) {
+    width: span(8);
+    margin-left: span(2 wide);
+  }
+  @include breakpoint($for-desktop-up) {
+    width: span(8);
+    margin-left: span(2 wide);
+  }
+  @include breakpoint($for-tablet-landscape-up) {
+    width: span(10);
+    margin-left: span(1 wide);
+  }
+
+}

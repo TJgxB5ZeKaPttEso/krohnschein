@@ -1,5 +1,5 @@
 .site-header {
-  background-image: linear-gradient(180deg, rgba( $color__krohnschein_blue ,0.65) 0%,rgba($color__krohnschein_blue,0) 100%);
+
   position: absolute;
   width: 100%;
   z-index: 99;
@@ -12,7 +12,7 @@
     border: none;
     line-height: 36px;
     &:hover {
-      background: rgba($color__krohnschein_blue, 0.3);
+      background: rgba(0,0,0, 0.15);
     }
   }
 
@@ -20,18 +20,13 @@
     content: inline-svg("diamond", white);
     width: 36px;
     height: 36px;
-    fill: black;
     display: block;
   }
   a[href*="vimeo.com"]:before {
     content: inline-svg("vimeo-square", white);
     width: 36px;
     height: 36px;
-    fill: black;
     display: block;
-    svg {
-      fill: #eaff00;
-    }
   }
   a[href*="pinterest"]:before {
     content: inline-svg("pinterest", white);
@@ -76,11 +71,12 @@
 
 .masthead__wrap {
   border-bottom: 1px solid hsla(0, 0, 100, 0.5);
-  width: span(8);
+  @extend %misc-column;
 
   @include breakpoint($for-phone-only) {
     width:90%;
     border: none;
   }
+
 
 }

@@ -1,0 +1,66 @@
+.site-footer {
+  color: $color__krohnschein_dimmed_white;
+  text-align: center;
+  .site-info {
+    @extend %content-column;
+    background-color: transparent;
+    ul {
+      display: block;
+      margin: 0;
+      li {
+        opacity: .75;
+        display: inline-block;
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  background-color: darktint();
+  min-height: 300px;
+  .footer-logo {
+    width: 75px;
+    margin: 2.5em auto 0;
+  }
+  svg {
+    fill: none;
+    stroke: $color__krohnschein_dimmed_white;
+    #underline {
+      stroke-linecap: square;
+    }
+  }
+  a {
+    color: #fff;
+    display: block;
+    padding: 15px 20px;
+    border-radius: 50%;
+    &:hover,
+    &:focus,
+    &:active {
+      border-bottom: none;
+      background-color: rgba(0,0,0,.15);
+    }
+  }
+  %footer-icons {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    padding-top: 6px;
+
+  }
+
+  a[href*="amazon"]:before {
+    content: inline-svg("diamond", white);
+    @extend %footer-icons;
+
+  }
+  a[href*="vimeo.com"]:before {
+    content: inline-svg("vimeo-square", white);
+    @extend %footer-icons;
+  }
+  a[href*="pinterest"]:before {
+    content: inline-svg("pinterest", white);
+    @extend %footer-icons;
+  }
+
+}//footer

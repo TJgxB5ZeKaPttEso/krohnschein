@@ -130,7 +130,7 @@
         <div class="masthead__wrap">
             <div class="site-branding">
                 <div class="nav_logo">
-                    <?php include 'images/DIST/svg/krohnschein_logo_web.svg'; ?>
+					<?php include 'images/DIST/svg/krohnschein_logo_web.svg'; ?>
                 </div>
 				<?php
 				if ( is_front_page() && is_home() ) : ?>
@@ -139,7 +139,7 @@
 				<?php else : ?>
                     <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"
                                              rel="home"><?php bloginfo( 'name' ); ?></a></p>
-					<?php
+				<?php
 				endif;
 				?>
             </div><!-- .site-branding -->
@@ -147,18 +147,20 @@
             <nav id="site-navigation" class="main-navigation">
                 <button class="menu-toggle" aria-controls="primary-menu"
                         aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'krohnschein' ); ?></button>
-	            <?php
-	            wp_nav_menu( array(
-		            'theme_location' => 'menu-2',
-		            'menu_id'        => 'social-menu',
-		            'link_before'    => '<span class="screen-reader-text">',
-		            'link_after'     => '</span>',
-	            ) );
-	            ?>
 				<?php
 				wp_nav_menu( array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
+					'container_class' => 'menu-socials-container',
+					'theme_location'  => 'menu-2',
+					'menu_id'         => 'social-menu',
+					'link_before'     => '<span class="screen-reader-text">',
+					'link_after'      => '</span>',
+					'fallback_cb'     => false,
+				) );
+
+				wp_nav_menu( array(
+					'container_class' => 'menu-krohnschein-container',
+					'theme_location'  => 'menu-1',
+					'menu_id'         => 'primary-menu',
 				) );
 				?>
 
@@ -234,85 +236,80 @@
 				putRevSlider( 'landingSlider' );
 			}
 		} else {
-		if ( is_page() || is_single() ) {
-			if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned to it.
-				krohnschein_header_thumbnail_before();
-				the_title();
+			if ( is_page() || is_single() ) {
+				if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned to it.
+					krohnschein_header_thumbnail_before();
+					the_title();
+					krohnschein_header_thumbnail_after();
+
+				} else {
+					krohnschein_no_header_thumbnail_before();
+					the_title();
+					krohnschein_header_thumbnail_after();
+				}
+
+			} elseif ( is_category() ) {
+				$title        = get_the_archive_title();
+				$croppedTitle = str_replace( '', '', $title );
+				krohnschein_no_header_thumbnail_before();
+				echo $croppedTitle;
+				the_archive_description( '<div class="archive-description">', '</div>' );
 				krohnschein_header_thumbnail_after();
 
-			} else {
+
+			} elseif ( is_post_type_archive() || is_archive() ) {
+
+				// Get Archive name and delete Archive from string
+				$title        = get_the_archive_title();
+				$croppedTitle = str_replace( '', '', $title );
+
 				krohnschein_no_header_thumbnail_before();
-				the_title();
+				echo $croppedTitle;
+				the_archive_description( '<div class="archive-description">', '</div>' );
 				krohnschein_header_thumbnail_after();
+			} else {
+
+
+				if ( get_header_image() ) { ?>
+                    <header class="entry-header">
+                        <div class="slider-fallback no-thumbnail"
+                             style="background-image: url(<?php header_image(); ?>)">
+                            <div class="slider-fallback-title-wrapper">
+								<?php
+
+								$description = get_bloginfo( 'description', 'display' );
+								if ( $description || is_customize_preview() ) : ?>
+                                    <h2 class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></h2>
+								<?php
+								endif; ?>
+
+                            </div>
+                        </div>
+                    </header><!-- .entry-header --><!-- .header-image -->
+					<?php
+				} else {
+					krohnschein_no_header_thumbnail_before();
+					krohnschein_header_thumbnail_after();
+				} // End header image check.
+
+
 			}
 
-		} elseif ( is_category() ) {
-			$title        = get_the_archive_title();
-			$croppedTitle = str_replace( '', '', $title );
-			krohnschein_no_header_thumbnail_before();
-			echo $croppedTitle;
-			the_archive_description( '<div class="archive-description">', '</div>' );
-			krohnschein_header_thumbnail_after();
 
-
-		} elseif ( is_post_type_archive() || is_archive() ) {
-
-			// Get Archive name and delete Archive from string
-			$title        = get_the_archive_title();
-			$croppedTitle = str_replace( '', '', $title );
-
-			krohnschein_no_header_thumbnail_before();
-			echo $croppedTitle;
-			the_archive_description( '<div class="archive-description">', '</div>' );
-			krohnschein_header_thumbnail_after();
 		}
-		else {
 
-
-		if ( get_header_image() ) { ?>
-        <header class="entry-header">
-            <div class="slider-fallback no-thumbnail" style="background-image: url(<?php header_image(); ?>)">
-                <div class="slider-fallback-title-wrapper">
-                    <?php
-
-                    $description = get_bloginfo( 'description', 'display' );
-                    if ( $description || is_customize_preview() ) : ?>
-                    <h2 class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></h2>
-	                <?php
-	                endif; ?>
-
-                </div>
-            </div>
-        </header><!-- .entry-header --><!-- .header-image -->
-			<?php
-			} else {
-				krohnschein_no_header_thumbnail_before();
-				krohnschein_header_thumbnail_after();
-			} // End header image check.
-
-
-			}
-
-
-			}
-
-			?>
+		?>
 
 
     </div>
-    <?php  if (is_home()) : ?>
+	<?php if ( is_home() ) : ?>
         <div class="welcome-card">
-            <h3><?php echo get_option('welcome_title');?></h3>
-            <p><?php echo get_option('welcome_description');?></p>
+            <h3><?php echo get_option( 'welcome_title' ); ?></h3>
+            <p class="abstract"><?php echo get_option( 'welcome_description' ); ?></p>
 
         </div>
 
 
-
-
-
-
-
-    <?php endif ?>
+	<?php endif ?>
 
     <div id="content" class="site-content">

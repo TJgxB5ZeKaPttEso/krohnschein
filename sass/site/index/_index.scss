@@ -1,43 +1,54 @@
 .welcome-card {
-  width: span(8);
-  margin-left: span(2 wide);
+  width: span(10);
+  margin-left: span(1 wide);
   margin-bottom: 2em;
-  padding: 1.5em 10%;
-  margin-top: -75px;
+  padding: 1.5em span(2 wide);
+  margin-top: -120px;
   z-index: 99;
   position: relative;
   background-color: #fff;
+  @include breakpoint($for-desktop-up) {
+    width: span(10);
+    margin-left: span(1 wide);
+    padding: 1.5em span(1 wide);
+  }
   h3 {
-    font-size:2.2em;
+    font-size: 2.2em;
   }
   @include breakpoint($for-big-desktop-up) {
-    padding: 1.5em 14%;
+    width: span(8 wide);
+    margin-left: span(2 wide);
+
   }
-  @include breakpoint($for-phone-only){
+  @include breakpoint($for-phone-only) {
     margin: 0;
     width: 100%;
     padding: 1em;
     h3 {
-      font-size:1.5em;
+      font-size: 1.5em;
     }
   }
 }
 
-
 .project-card {
-  display: flex;
   position: relative;
   width: span(8);
   margin-left: span(2 wide);
   background: $color__krohnschein_grey_ultralight;
   height: 100%;
   min-height: 400px;
+  margin-bottom: 5em;
+  box-shadow: 0 0 5px rgba(0,0,0,0);
+  transition: box-shadow 500ms ease;
+  &:hover {
+    box-shadow: 0 25px 165px rgba(0,0,0,.15);
+  }
 
   .no-thumbnail {
     background-color: $color__krohnschein_primary;
   }
   .post-thumbnail {
-    width: 60%;
+    width: 50%;
     margin: 0;
     height: 100%;
     position: absolute;
@@ -92,22 +103,24 @@
       @include breakpoint($for-phone-only) {
         display: none;
       }
-    }//entry-meta
+    }
+    //entry-meta
     @include breakpoint($for-phone-only) {
-      width:100%;
+      width: 100%;
       min-height: 100%;
       position: absolute;
     }
-  }//post-thumbnail
+  }
+  //post-thumbnail
   .project-card__content {
     align-self: center;
-    width: 40%;
-    margin-left: 60%;
+    width: 50%;
+    margin-left: 50%;
     padding: 5%;
 
     .entry-title {
-      margin: 0 0 0.3em;
-      font-size: 2.4em;
+      margin: 0 0 0.85em;
+      font-size: 2.1em;
       line-height: 1;
 
       a {
@@ -126,7 +139,7 @@
       margin: 0;
       p {
         margin: 0;
-        line-height: 1.125;
+        line-height: 1.4;
         color: $color__krohnschein_grey_dark;
         @include breakpoint($for-phone-only) {
           color: #fff;
@@ -160,21 +173,31 @@
 
     }
     @include breakpoint($for-phone-only) {
-      width:100%;
+      width: 100%;
       position: absolute;
       margin: 0;
       bottom: 0;
-      background: rgba($color__krohnschein_blue,.5);
+      background: rgba($color__krohnschein_blue, .5);
 
     }
 
-  }//project-card__content
+  }
+  //project-card__content
+
+  //project card media queries
+
   @include breakpoint($for-phone-only) {
-    width:100%;
+    width: 100%;
     position: relative;
     margin: 0;
     display: block;
     background-color: #fff;
 
   }
+  @include breakpoint($for-big-desktop-up) {
+    width: span(6);
+    margin-left: span(3 wide);
+  }
 }
+
+//project card

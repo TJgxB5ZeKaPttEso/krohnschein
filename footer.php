@@ -11,21 +11,32 @@
 
 ?>
 
-	</div><!-- #content -->
+</div><!-- #content -->
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'krohnschein' ) ); ?>"><?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'krohnschein' ), 'WordPress' );
-			?></a>
-			<span class="sep"> | </span>
-			<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'krohnschein' ), 'krohnschein', '<a href="http://JohannesKrohn.de">Michael Bernschein & Johannes Krohn</a>' );
-			?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
+<footer id="colophon" class="site-footer">
+    <div class="footer-logo">
+		<?php include( "images/DIST/svg/krohnschein_logo_web.svg" ) ?>
+    </div>
+    <div class="site-info">
+		<?php
+		/* translators: 1: Theme name, 2: Theme author. */
+		printf( esc_html__( 'Copyright: %1$s by %2$s.', 'krohnschein' ), 'Studio Krohnschein', 'Michael Bernschein & Johannes Krohn, 2017' );
+
+		wp_nav_menu( array(
+			'container_class' => 'menu-socials-container',
+			'theme_location'  => 'menu-2',
+			'menu_id'         => 'social-menu',
+			'link_before'     => '<span class="screen-reader-text">',
+			'link_after'      => '</span>',
+			'fallback_cb'     => false,
+		) );
+
+
+		?>
+
+
+    </div><!-- .site-info -->
+</footer><!-- #colophon -->
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

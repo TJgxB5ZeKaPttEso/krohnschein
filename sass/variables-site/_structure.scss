@@ -7,10 +7,10 @@ $size__site-sidebar: 25%;
 
 
 $for-phone-only: max-width 599px;
-$for-tablet-portrait-up: 600px;
-$for-tablet-landscape-up: 900px;
-$for-desktop-up: 1200px;
-$for-big-desktop-up: 1800px;
+$for-tablet-portrait-up: 600px 899px;
+$for-tablet-landscape-up: 900px 1199px;
+$for-desktop-up: 1200px 1439px;
+$for-big-desktop-up: 1440px;
 
 
 /*--------------------------------------------------------------

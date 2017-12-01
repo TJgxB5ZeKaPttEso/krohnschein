@@ -19,6 +19,7 @@
   height: 700px;
   height: calc(100vh - 50px);
   min-height: 650px;
+  max-height: 900px;
   width: 100%;
   &::before {
     content: "";
@@ -32,6 +33,7 @@
     height: 700px;
     height: calc(100vh - 50px);
     min-height: 650px;
+    max-height: 1080px;
     position: relative;
     &::before {
       content: "";

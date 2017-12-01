@@ -305,3 +305,106 @@ function df_disable_comments_admin_bar() {
 	}
 }
 add_action('init', 'df_disable_comments_admin_bar');
+
+
+/**
+ * Theme shortcodes
+ */
+
+// [bartag foo="foo-value"]
+
+function invison_embed_function( $atts ) {
+	// Attributes
+	$atts = shortcode_atts(
+		array(
+			'url' => '//invis.io/RS2U5B1BA',
+		),
+		$atts,
+		'invision_embed'
+	);
+	return '<div class="proto-wrapper">' .
+		'<div class="proto-prototype">' .
+			'<div class="proto-prototype-frame">' .
+				'<iframe width="456" height="940" src="' . esc_attr($atts['url']) . '" frameborder="0" allowfullscreen></iframe>' .
+			'</div>'.
+		'</div>'.
+	'</div>';
+
+
+
+	return ob_get_clean();
+}
+add_shortcode( 'invision_embed', 'invison_embed_function' );
+
+function pab( $atts , $content = null ) {
+
+	return '<p class="abstract">' . $content . '</p>';
+
+}
+add_shortcode( 'pab', 'pab' );
+
+/**
+ * Gallery shortcode adjustment to work with lightbox
+ */
+
+add_filter( 'post_gallery', 'wpse_gallery_shortcode', 10, 3 );
+/**
+ * Filters the default gallery shortcode output.
+ *
+ * @see gallery_shortcode()
+ *
+ * @param string $output   The gallery output. Default empty.
+ * @param array  $attr     Attributes of the gallery shortcode.
+ * @param int    $instance Unique numeric ID of this gallery shortcode instance.
+ */
+function wpse_gallery_shortcode( $output, $attr, $instance ) {
+	// Temporarily remove our filter to prevent infinite loop.
+	remove_filter( 'post_gallery', 'wpse_gallery_shortcode', 10, 3 );
+
+	// Use WordPress' native function for generating gallery output.
+	$gallery_html = gallery_shortcode( $attr );
+
+	// Create an instance of DOMDocument.
+	$dom = new \DOMDocument();
+
+	// Supress errors due to malformed HTML.
+	// See http://stackoverflow.com/a/17559716/3059883
+	$libxml_previous_state = libxml_use_internal_errors( true );
+
+	// Populate $dom with $gallery_html, making sure to handle UTF-8, otherwise
+	// problems will occur with UTF-8 characters.
+	// Also, make sure that the doctype and HTML tags are not added to our HTML fragment. http://stackoverflow.com/a/22490902/3059883
+	$dom->loadHTML( mb_convert_encoding( $gallery_html, 'HTML-ENTITIES', 'UTF-8' ), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
+
+	// Restore previous state of libxml_use_internal_errors() now that we're done.
+	// Again, see http://stackoverflow.com/a/17559716/3059883
+	libxml_use_internal_errors( $libxml_previous_state );
+
+	// Create an instance of DOMXpath.
+	$xpath = new \DOMXpath( $dom );
+
+	// Match elements with the class gallery-icon (these can be <div> or <dt> depending on whether the theme has support for HTML5.
+	// See http://stackoverflow.com/a/26126336/3059883
+	$gallery_icons = $xpath->query( "//*[contains(concat(' ', normalize-space(@class), ' '), ' gallery-icon ')]" );
+
+	// Iterate over the the gallery icons.
+	foreach ( $gallery_icons as $gallery_icon ) {
+		// Find the <a> tags and add our custom attribute and value.
+		$gallery_icon_child_node_link = $xpath->query( "//a", $gallery_icon );
+		foreach ( $gallery_icon_child_node_link as $node_link ) {
+			$gallery_icon_data_featherlight = $dom->createAttribute( 'data-featherlight' );
+			$gallery_icon_data_featherlight->value = 'image';
+
+			$node_link->appendChild( $gallery_icon_data_featherlight );
+		}
+	}
+
+	// Save the updated HTML.
+	$gallery_html = $dom->saveHTML();
+
+	// Add our filter back so that it will run the next time that the gallery shortcode is used.
+	add_filter( 'post_gallery', 'wpse_gallery_shortcode', 10, 3 );
+
+	// Return the modified HTML.
+	return $gallery_html;
+}

@@ -1,8 +1,9 @@
 $color__krohnschein_primary: hsl(239, 38%, 25%);
 $color__krohnschein_secondary: hsl(7, 80%, 51%);
 $color__krohnschein_blue: hsl(239, 38%, 25%);
-$color__krohnschein_grey_ultralight: #F3F4F5;
-$color__krohnschein_grey_dark: #8C90A0;
+$color__krohnschein_grey_ultralight: hsla(210, 20%, 98%, 1);
+$color__krohnschein_grey_dark: hsla(228, 10%, 45%, 1);
+$color__krohnschein_dimmed_white: rgba(255, 255, 255, .75);
 
 $color__background-body: #fff;
 $color__background-screen: #f1f1f1;
@@ -15,7 +16,7 @@ $color__text-screen: #21759b;
 $color__text-input: #666;
 $color__text-input-focus: #111;
 $color__link:  $color__krohnschein_secondary;
-$color__link-visited:  $color__krohnschein_blue;
+$color__link-visited:  $color__krohnschein_secondary;
 $color__link-hover: $color__krohnschein_secondary;
 $color__text-main: #404040;
 
