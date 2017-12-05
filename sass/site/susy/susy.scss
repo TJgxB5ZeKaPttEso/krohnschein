@@ -31,7 +31,7 @@ $susy: (
   width: span(10);
   margin-left: span(1 wide);
   @include breakpoint($for-big-desktop-up) {
-    width: span(8);
+    width: span(8 wide);
     margin-left: span(2 wide);
   }
   @include breakpoint($for-desktop-up) {

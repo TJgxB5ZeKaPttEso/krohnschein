@@ -161,6 +161,7 @@
 					'container_class' => 'menu-krohnschein-container',
 					'theme_location'  => 'menu-1',
 					'menu_id'         => 'primary-menu',
+					'fallback_cb'     => false,
 				) );
 				?>
 

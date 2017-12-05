@@ -160,6 +160,25 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+/**
+ * Custom post types
+ */
+
+require get_stylesheet_directory() . '/inc/custom-post-types.php';
+
+
+/**
+ * Custom post types
+ */
+
+require get_stylesheet_directory() . '/inc/shortcodes.php';
+
+
+
+
+
+
+
 function wpdocs_custom_excerpt_length( $length ) {
 	return 25;
 }
@@ -222,3 +241,20 @@ function krohnschein_textbox_callback($args) {  // Textbox Callback
 	$option = get_option($args[0]);
 	echo '<input type="text" id="'. $args[0] .'" name="'. $args[0] .'" value="' . $option . '" />';
 }
+
+function my_add_reviews( $query ) {
+	if ( ! is_admin() && $query->is_main_query() ) {
+		if ($query->is_home() || $query->is_search() ) {
+			$query->set( 'post_type', array( 'post', 'review', 'testimonial' ) );
+		}
+	}
+}
+
+add_action( 'pre_get_posts', 'my_add_reviews' );
+
+function kb_svg ( $svg_mime ){
+	$svg_mime['svg'] = 'image/svg+xml';
+	return $svg_mime;
+}
+
+add_filter( 'upload_mimes', 'kb_svg' );

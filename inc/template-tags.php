@@ -308,42 +308,6 @@ add_action('init', 'df_disable_comments_admin_bar');
 
 
 /**
- * Theme shortcodes
- */
-
-// [bartag foo="foo-value"]
-
-function invison_embed_function( $atts ) {
-	// Attributes
-	$atts = shortcode_atts(
-		array(
-			'url' => '//invis.io/RS2U5B1BA',
-		),
-		$atts,
-		'invision_embed'
-	);
-	return '<div class="proto-wrapper">' .
-		'<div class="proto-prototype">' .
-			'<div class="proto-prototype-frame">' .
-				'<iframe width="456" height="940" src="' . esc_attr($atts['url']) . '" frameborder="0" allowfullscreen></iframe>' .
-			'</div>'.
-		'</div>'.
-	'</div>';
-
-
-
-	return ob_get_clean();
-}
-add_shortcode( 'invision_embed', 'invison_embed_function' );
-
-function pab( $atts , $content = null ) {
-
-	return '<p class="abstract">' . $content . '</p>';
-
-}
-add_shortcode( 'pab', 'pab' );
-
-/**
  * Gallery shortcode adjustment to work with lightbox
  */
 
@@ -408,3 +372,4 @@ function wpse_gallery_shortcode( $output, $attr, $instance ) {
 	// Return the modified HTML.
 	return $gallery_html;
 }
+

@@ -34,3 +34,5 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+/sass/variables-site/_sass-inline-svg.scss
+/sass/variables-site/_sass-inline-svg-data.scss
